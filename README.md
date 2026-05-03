@@ -1,32 +1,23 @@
 # certificados-personas-por-fecha-ingreso-provincia-localidad
 
-## Aplicación del notebook de clase al caso del repositorio
+Proyecto refactorizado para ejecutar experimentos de ML desde scripts Python (sin depender de notebooks) y generar reportes HTML por corrida.
 
-Se implementó un pipeline completo en `mlp_tuning_pipeline.py` siguiendo la referencia de clase.
+## Estructura
 
-### Trazabilidad solicitada
-
-- Carga y limpieza del dataset + conversión de tipos: **(extraido del notebook de clase)**.
-- Construcción de `Pipeline` con escalado y MLP: **(extraido del notebook de clase)**.
-- Validación cruzada con `cross_val_score`: **(extraido del notebook de clase)**.
-- Generación de combinaciones con `ParameterGrid`: **(extraido del notebook de clase)**.
-- Búsqueda exhaustiva con `GridSearchCV`: **(extraido del notebook de clase)**.
-- Búsqueda aleatoria con `RandomizedSearchCV`: **(extraido del notebook de clase)**.
-- Comparación de rendimiento base vs tuning: **(extraido del notebook de clase)**.
-
-### Estado frente al pipeline previo del repositorio
-
-No había un pipeline de ML previo en este repositorio (solo dataset + README), por lo tanto no aplica
-la marca **(ya estaba implementado, coincide con notebook)** para componentes de entrenamiento/tuning.
-
-### Resolución de conflictos
-
-No se detectaron conflictos de implementación preexistente; se aplicó directamente la referencia de clase.
+- `src/`: módulos de datos, features, modelos, entrenamiento, evaluación, plots, reporting y orquestación.
+- `scripts/run_experiment.py`: entrypoint de ejecución.
+- `configs/baseline.yaml`: configuración base.
+- `results/<run_id>/`: artefactos por ejecución (`config.yaml`, `metrics.json`, `predictions.csv`, `plots/`, `report.html`).
 
 ## Ejecución
 
 ```bash
-python mlp_tuning_pipeline.py
+python scripts/run_experiment.py --config configs/baseline.yaml
 ```
 
-> Requiere dependencias: `numpy`, `pandas`, `scikit-learn`.
+## Dependencias
+
+- `pandas`
+- `scikit-learn`
+- `matplotlib`
+- `pyyaml`
